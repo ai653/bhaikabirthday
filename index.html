@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Ayush Thakur</title>
   <style>
     body {
@@ -11,50 +10,179 @@
       color: #fff;
       text-align: center;
       font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
     }
+
     h1 {
       font-size: 2.5rem;
       margin-top: 20px;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px auto;
-      max-width: 800px;
+
+    .animated-logo {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+      animation: glow 2s ease-in-out infinite alternate;
+      margin: 20px 0;
     }
-    .gallery img {
-      width: 180px;
-      height: auto;
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff; }
+    }
+
+    .countdown {
+      font-size: 1.8rem;
+      margin: 20px 0;
+      color: #ffcc00;
+    }
+
+    .best-lines {
+      margin: 20px auto;
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #aaffaa;
+    }
+
+    .slideshow {
+      margin: 20px auto;
+      max-width: 300px;
+      height: 200px;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
       border: 4px solid #fff;
       border-radius: 10px;
-      transition: transform 0.3s ease;
+      object-fit: cover;
     }
-    .gallery img:hover {
-      transform: scale(1.1);
-    }
+
     audio {
       margin-top: 20px;
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 30px 0;
+      transition: background 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1DA851;
+    }
+
+    .qr-code {
+      margin: 20px auto;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   </style>
 </head>
 <body>
-  <h1>Happy Birthday Ayush Thakur 🎉</h1>
+  <h1>Happy Birthday</h1>
+  <div class="animated-logo">✨ Ayush ✨</div>
   <p>Enjoy these memories and this special moment!</p>
+
+  <!-- Countdown Timer -->
+  <div class="countdown" id="countdown"></div>
+
+  <!-- Best Birthday Lines -->
+  <div class="best-lines">
+    <p>🎂 "Dosti ka ek hi rule hai – kabhi rules mat banao!"</p>
+    <p>🎉 "Teri muskaan meri sabse badi khushi hai. Happy Birthday dost!"</p>
+    <p>🌟 "Zindagi bhar teri yaari ka sahara rahe, tu jahan rahe khush rahe, yahi dua humara rahe."</p>
+    <p>💖 "Tu hai to sab kuch hai. Janamdin mubarak ho meri jaan, Ayush!"</p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="slideshow">
+    <img id="slideshow-image" src="gallery/6057811278497434994.jpg" alt="Slideshow Image">
+  </div>
+
+  <!-- Audio -->
   <audio controls autoplay loop>
     <source src="birthday-audio.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
-  <div class="gallery">
-    <img src="gallery/6057811278497434994.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434993.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434990.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434991.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434992.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434989.jpg" alt="Gallery image">
-    <img src="gallery/6057811278497434997.jpg" alt="Gallery image">
 
+  <!-- WhatsApp Wish Button -->
+  <a href="https://wa.me/?text=Happy%20Birthday%20Ayush!%20🎉🎂%20May%20your%20day%20be%20filled%20with%20joy%20and%20laughter!" target="_blank">
+    <button class="whatsapp-btn">🎁 Send Birthday Wish on WhatsApp</button>
+  </a>
+
+  <!-- QR Code -->
+  <div class="qr-code">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://your-birthday-site-link.com&size=150x150" alt="QR Code to Open Page">
+    <p>📱 Scan to open this page!</p>
   </div>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date("August 1, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const gap = targetDate - now;
+
+      const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+      if (gap > 0) {
+        countdownEl.innerHTML = `🎈 Birthday Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        countdownEl.innerHTML = `🎉 It's Ayush's Birthday Today! 🎂🎁`;
+        launchConfetti();
+      }
+    }
+
+    function launchConfetti() {
+      setInterval(() => {
+        confetti({
+          particleCount: 100,
+          spread: 100,
+          origin: { y: 0.6 }
+        });
+      }, 1000);
+    }
+
+    // Slideshow Logic
+    const images = [
+      "gallery/6057811278497434994.jpg",
+      "gallery/6057811278497434993.jpg",
+      "gallery/6057811278497434990.jpg",
+      "gallery/6057811278497434991.jpg",
+      "gallery/6057811278497434992.jpg",
+      "gallery/6057811278497434989.jpg",
+      "gallery/6057811278497434997.jpg"
+    ];
+    let currentSlide = 0;
+    const slideshowImage = document.getElementById("slideshow-image");
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % images.length;
+      slideshowImage.src = images[currentSlide];
+    }, 2500);
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
