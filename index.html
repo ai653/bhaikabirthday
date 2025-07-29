@@ -42,12 +42,8 @@
     }
 
     @keyframes shine {
-      0% {
-        background-position: -200% center;
-      }
-      100% {
-        background-position: 200% center;
-      }
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
 
     .messages {
@@ -107,6 +103,44 @@
       font-size: 1.2rem;
       margin-top: 10px;
     }
+
+    /* Balloons */
+    .balloon {
+      width: 30px;
+      height: 40px;
+      background: red;
+      border-radius: 50% 50% 50% 50%;
+      position: absolute;
+      bottom: -50px;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      background-color: yellow;
+      animation: drop 3s linear infinite;
+      z-index: 999;
+    }
+
+    @keyframes drop {
+      0% { transform: translateY(0) rotate(0); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -139,6 +173,30 @@
     <img src="gallery/6057811278497434989.jpg" alt="Gallery image">
     <img src="gallery/6057811278497434997.jpg" alt="Gallery image">
   </div>
+
+  <!-- Confetti and Balloons via JavaScript -->
+  <script>
+    // Create Balloons
+    for (let i = 0; i < 20; i++) {
+      let balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.background = `hsl(${Math.random()*360}, 70%, 60%)`;
+      balloon.style.animationDuration = 5 + Math.random()*5 + "s";
+      document.body.appendChild(balloon);
+    }
+
+    // Create Confetti
+    for (let i = 0; i < 80; i++) {
+      let confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.background = `hsl(${Math.random()*360}, 80%, 60%)`;
+      confetti.style.animationDuration = 2 + Math.random()*3 + "s";
+      confetti.style.width = confetti.style.height = Math.random()*8 + 4 + "px";
+      document.body.appendChild(confetti);
+    }
+  </script>
 
 </body>
 </html>
