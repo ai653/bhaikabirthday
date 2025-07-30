@@ -3,6 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Gauri 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      margin-top: 20px;
+      color: #ffccff;
+    }
+
+    p.message {
+      font-size: 1.2rem;
+      margin: 10px auto;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .countdown {
+      font-size: 1.5rem;
+      margin-top: 20px;
+    }
+
+    /* Balloon */
+    .balloon {
+      width: 30px;
+      height: 40px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -50px;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+
+    /* Confetti (Rose Petals) */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: url('https://png.pngtree.com/png-clipart/20211225/original/pngtree-pink-rose-petal-3d-design-png-image_7004567.png') no-repeat center;
+      background-size: cover;
+      animation: drop 5s linear infinite;
+      z-index: 999;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Happy Birthday Gauri didi 🎂</h1>
+  <div class="countdown" id="countdown"></div>
+
+  <p class="message">Wishing you a day filled with love, joy, and endless smiles. 🎉</p>
+  <p class="message">You light up every room you enter — keep shining always! ✨</p>
+  <p class="message">May your dreams be big and your cake bigger! 🍰</p>
+  <p class="message">Here's to a beautiful soul who makes the world more beautiful just by being in it. 💖</p>
+
+  <div class="gallery">
+    <img src="gallery/6075729177681708919.jpg" alt="Gauri 1">
+    <img src="gallery/6075729177681708911.jpg" alt="Gauri 2">
+    <img src="gallery/6075729177681708914.jpg" alt="Gauri 3">
+    <img src="gallery/6075729177681708918.jpg" alt="Gauri 4">
+    <img src="gallery/6075729177681708910.jpg" alt="Gauri 5">
+    <img src="gallery/6075729177681708909.jpg" alt="Gauri 6">
+    <img src="gallery/6075729177681708915.jpg" alt="Gauri 7">
+    <img src="gallery/6075729177681708916.jpg" alt="Gauri 8">
+    <img src="gallery/6075729177681708907.jpg" alt="Gauri 9">
+  </div>
+
+  <!-- Audio -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/05/16/audio_61b1f4a0b6.mp3?filename=happy-birthday-to-you-140141.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- JavaScript -->
+  <script>
+    // Countdown Timer
+    const countdown = document.getElementById('countdown');
+    const birthday = new Date('2025-08-01T00:00:00');
+    function updateCountdown() {
+      const now = new Date();
+      const diff = birthday - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdown.innerHTML = `Birthday in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Balloons
+    for (let i = 0; i < 20; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = `${Math.random() * 100}vw`;
+      balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      document.body.appendChild(balloon);
+    }
+
+    // Confetti (Rose Petals)
+    for (let i = 0; i < 30; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'confetti';
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Ayush Thakur 🎂</title>
 
   <!-- Google Fonts -->
